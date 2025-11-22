@@ -1,9 +1,12 @@
 # 🐂 BullsCool AI - Instant HVAC Quotes for USF Students
 
+
 <div align="center">
   <h3>Fast AC quotes in Florida heat — Powered by Gemini AI</h3>
   <p>Made at HackJam 2025 | University of South Florida</p>
 </div>
+
+<img width="1470" height="956" alt="Screenshot 2025-11-22 at 5 33 54 PM" src="https://github.com/user-attachments/assets/5e07f4cf-acc9-47e0-8b8e-447d259bc8df" />
 
 ## 🎯 Problem
 
@@ -143,4 +146,5 @@ package-lock.json
 # API Keys (important!)
 *_key.txt
 secrets/
+
 
