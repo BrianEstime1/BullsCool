@@ -2,7 +2,7 @@
 
 <div align="center">
   <h3>Fast AC quotes in Florida heat — Powered by Gemini AI</h3>
-  <p>Made with ❤️ at HackJam 2025 | University of South Florida</p>
+  <p>Made at HackJam 2025 | University of South Florida</p>
 </div>
 
 ## 🎯 Problem
@@ -143,3 +143,4 @@ package-lock.json
 # API Keys (important!)
 *_key.txt
 secrets/
+
