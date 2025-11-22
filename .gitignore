@@ -1,0 +1,22 @@
+BullsCool-backend/
+
+# Environment variables
+.env
+*.env
+
+# Node modules
+node_modules/
+
+# Package files
+package.json
+package-lock.json
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# VS Code
+.vscode/
+
+# Logs
+*.log

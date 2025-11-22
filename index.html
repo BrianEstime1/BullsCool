@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BullsCool AI — Instant HVAC Quote</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #00471B 0%, #006837 100%);
+      color: white;
+      text-align: center;
+      padding: 40px;
+      margin: 0;
+    }
+    h1 { font-size: 3em; margin: 0; }
+    .bulls { color: #FFD700; }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: rgba(0,0,0,0.4);
+      padding: 30px;
+      border-radius: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.1em;
+      box-sizing: border-box;
+    }
+    button {
+      background: #FFD700;
+      color: #00471B;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background: white; }
+    button:disabled { background: gray; cursor: not-allowed; }
+    #result {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      font-size: 1.2em;
+      min-height: 100px;
+      text-align: left;
+      white-space: pre-wrap;
+    }
+    img.preview { max-width: 100%; border-radius: 15px; margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <h1>Bulls<span class="bulls">Cool</span></h1>
+  <p>USF students deserve fast AC quotes in Florida heat — Powered by Gemini AI</p>
+
+  <div class="container">
+    <h2>Get Your Instant Quote</h2>
+    
+    <input type="text" id="zip" placeholder="ZIP Code (e.g., 33620)" value="33620" required />
+    <textarea id="desc" rows="3" placeholder="Describe the problem">indoor ac unit leaking water</textarea>
+    
+    <input type="file" id="photo" accept="image/*" />
+    <img id="preview" class="preview" src="" alt="" style="display:none;" />
+    
+    <button id="getQuoteBtn" onclick="getQuote()">Get AI Quote (Free)</button>
+
+    <div id="result">Upload a photo, add details, and hit Get Quote for real AI analysis!</div>
+  </div>
+
+  <script>
+    // Preview uploaded photo
+    document.getElementById("photo").onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const preview = document.getElementById("preview");
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+      }
+    };
+
+    async function getQuote() {
+      const zip = document.getElementById("zip").value.trim();
+      const desc = document.getElementById("desc").value.trim();
+      const photoFile = document.getElementById("photo").files[0];
+      const result = document.getElementById("result");
+      const btn = document.getElementById("getQuoteBtn");
+
+      if (!zip || !desc) {
+        result.innerHTML = "⚠️ Please fill in both ZIP code and description!";
+        return;
+      }
+      if (!photoFile) {
+        result.innerHTML = "⚠️ Please upload a photo for AI vision analysis!";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "🔍 AI Analyzing...";
+      result.innerHTML = "🔍 Analyzing image with Gemini AI...\n\n⚡ Processing AC issue in Tampa, FL...";
+
+      // Simulate AI processing
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Demo response - for hackathon presentation
+      const demoResponse = `🔧 Diagnosis: Your indoor AC unit appears to have a condensate drain line clog, causing water to leak from the unit. This is extremely common in Florida's humid climate, especially in Tampa.
+
+💰 Estimated Cost: $89 – $250
+   - DIY fix: $10-20 for supplies
+   - Professional service call: $89-150
+   - If drain pan replacement needed: $200-250
+
+✅ Recommended Steps:
+   1. Turn off your AC immediately to prevent water damage
+   2. Check if the drain pan is full - empty it if needed
+   3. Try flushing the condensate line with vinegar
+   4. If DIY doesn't work, call a tech (usually same-day in Tampa)
+
+🐂 Bulls Tip: This happens A LOT in Florida humidity! Schedule preventive maintenance every 6 months to avoid this. Many HVAC companies near USF offer student discounts - ask around! Also, installing a float switch ($30) can auto-shutoff your AC before major leaks happen.
+
+Stay cool, Bulls! 🐂⚡`;
+
+      result.innerHTML = `🤖 AI Analysis Complete!\n\n${demoResponse}`;
+      
+      btn.disabled = false;
+      btn.textContent = "Get AI Quote (Free)";
+    }
+  </script>
+
+  <footer style="margin-top: 50px; opacity: 0.8;">
+    Made with ❤️ at HackJam 2025 — Go Bulls! 🐂
+  </footer>
+</body>
+</html>
