@@ -54,7 +54,7 @@ open index.html
 ```
 
 ### Option 2: View Live Demo
-🔗 [Live Demo](https://brianestime1.github.io/BullsCool) *(coming soon)*
+live demon on my X acount! @RealCyberBrian
 
 ## 📸 How It Works
 
@@ -146,5 +146,6 @@ package-lock.json
 # API Keys (important!)
 *_key.txt
 secrets/
+
 
 
