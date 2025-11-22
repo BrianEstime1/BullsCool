@@ -5,65 +5,268 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BullsCool AI — Instant HVAC Quote</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #00471B 0%, #006837 100%);
       color: white;
       text-align: center;
-      padding: 40px;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+.contact-section {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(255, 215, 0, 0.15);
+      border: 2px solid #FFD700;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+.contact-section h3 {
+  color: #FFD700;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.contact-section p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.contact-section a {
+  color: #FFD700;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-section a:hover {
+  text-decoration: underline;
+}
+
+    /* Hero section with overlay for better text contrast */
+    .hero {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 30px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+
+    h1 { 
+      font-size: 3em; 
+      margin: 0 0 15px 0;
+      letter-spacing: -1px;
+    }
+
+    .bulls { 
+      color: #FFD700;
+    }
+
+    /* Improved subtitle contrast */
+    .subtitle {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       margin: 0;
     }
-    h1 { font-size: 3em; margin: 0; }
-    .bulls { color: #FFD700; }
+
     .container {
       max-width: 600px;
-      margin: 40px auto;
-      background: rgba(0,0,0,0.4);
-      padding: 30px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 35px;
       border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
-    input, textarea, button {
+
+    h2 {
+      margin-bottom: 25px;
+      font-size: 1.8em;
+    }
+
+    /* Better form spacing */
+    input, textarea, button, .file-upload-wrapper {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
+      padding: 14px;
+      margin: 12px 0;
       border-radius: 10px;
       border: none;
       font-size: 1.1em;
-      box-sizing: border-box;
     }
+
+    input, textarea {
+      background: white;
+      color: #333;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #888;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Custom file upload styling */
+    .file-upload-wrapper {
+      position: relative;
+      background: white;
+      border: 2px dashed #ccc;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .file-upload-wrapper:hover {
+      border-color: #FFD700;
+      background: #f9f9f9;
+    }
+
+    .file-upload-wrapper input[type="file"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
+
+    .file-upload-label {
+      color: #666;
+      font-size: 1em;
+      pointer-events: none;
+    }
+
+    .file-upload-label.has-file {
+      color: #00471B;
+      font-weight: bold;
+    }
+
+    /* Enhanced button styling */
     button {
       background: #FFD700;
       color: #00471B;
       font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover { background: white; }
-    button:disabled { background: gray; cursor: not-allowed; }
-    #result {
-      margin-top: 30px;
-      padding: 20px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 15px;
       font-size: 1.2em;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+      margin-top: 20px;
+    }
+
+    button:hover { 
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    }
+
+    button:disabled { 
+      background: gray;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    #result {
+      margin-top: 25px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      font-size: 1.1em;
       min-height: 100px;
       text-align: left;
       white-space: pre-wrap;
+      line-height: 1.6;
     }
-    img.preview { max-width: 100%; border-radius: 15px; margin: 15px 0; }
+
+    img.preview { 
+      max-width: 100%;
+      border-radius: 15px;
+      margin: 15px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Enhanced footer */
+    footer {
+      margin-top: 50px;
+      font-size: 1.1em;
+      color: #FFD700;
+      font-weight: bold;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2em;
+      }
+
+      .subtitle {
+        font-size: 1em;
+      }
+
+      .container {
+        padding: 25px 20px;
+      }
+
+      input, textarea, button {
+        font-size: 1em;
+        padding: 12px;
+      }
+
+      button {
+        font-size: 1.1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Bulls<span class="bulls">Cool</span></h1>
-  <p>USF students deserve fast AC quotes in Florida heat — Powered by Gemini AI</p>
+  <div class="hero">
+    <h1>🐂 Bulls<span class="bulls">Cool</span></h1>
+    <p class="subtitle">USF students deserve fast AC quotes in Florida heat — Powered by Gemini AI</p>
+  </div>
 
   <div class="container">
     <h2>Get Your Instant Quote</h2>
     
     <input type="text" id="zip" placeholder="ZIP Code (e.g., 33620)" value="33620" required />
-    <textarea id="desc" rows="3" placeholder="Describe the problem">indoor ac unit leaking water</textarea>
     
-    <input type="file" id="photo" accept="image/*" />
+    <textarea id="desc" rows="3" placeholder="Describe the problem (e.g., AC not blowing cold, weird noise)">indoor ac unit leaking water</textarea>
+    
+    <div class="file-upload-wrapper">
+      <input type="file" id="photo" accept="image/*" />
+      <div class="file-upload-label" id="fileLabel">
+        📷 Upload photo (tap to browse)
+      </div>
+    </div>
+    
     <img id="preview" class="preview" src="" alt="" style="display:none;" />
     
     <button id="getQuoteBtn" onclick="getQuote()">Get AI Quote (Free)</button>
@@ -71,20 +274,32 @@
     <div id="result">Upload a photo, add details, and hit Get Quote for real AI analysis!</div>
   </div>
 
+  <footer>
+    Made at HackJam 2025 — Go Bulls! 🐂⚡
+  </footer>
+
   <script>
-    // Preview uploaded photo
+    // Update file upload label when file is selected
     document.getElementById("photo").onchange = (e) => {
       const file = e.target.files[0];
+      const label = document.getElementById("fileLabel");
+      
       if (file) {
+        label.textContent = `✓ ${file.name}`;
+        label.classList.add('has-file');
+        
         const preview = document.getElementById("preview");
         preview.src = URL.createObjectURL(file);
         preview.style.display = "block";
+      } else {
+        label.textContent = "📷 Upload photo (tap to browse)";
+        label.classList.remove('has-file');
       }
     };
 
     async function getQuote() {
       const zip = document.getElementById("zip").value.trim();
-      const desc = document.getElementById("desc").value.trim();
+      const desc = document.getElementById("desc").value.trim().toLowerCase();
       const photoFile = document.getElementById("photo").files[0];
       const result = document.getElementById("result");
       const btn = document.getElementById("getQuoteBtn");
@@ -105,13 +320,16 @@
       // Simulate AI processing
       await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // Demo response - for hackathon presentation
-      const demoResponse = `🔧 Diagnosis: Your indoor AC unit appears to have a condensate drain line clog, causing water to leak from the unit. This is extremely common in Florida's humid climate, especially in Tampa.
+      // Different responses based on keywords in description
+      let demoResponse;
+      
+      if (desc.includes("leak") || desc.includes("water")) {
+        demoResponse = `🔧 Diagnosis: Your indoor AC unit appears to have a condensate drain line clog, causing water to leak from the unit. This is extremely common in Florida's humid climate, especially in Tampa.
 
 💰 Estimated Cost: $89 – $250
-   - DIY fix: $10-20 for supplies
-   - Professional service call: $89-150
-   - If drain pan replacement needed: $200-250
+   • DIY fix: $10-20 for supplies
+   • Professional service call: $89-150
+   • If drain pan replacement needed: $200-250
 
 ✅ Recommended Steps:
    1. Turn off your AC immediately to prevent water damage
@@ -119,19 +337,92 @@
    3. Try flushing the condensate line with vinegar
    4. If DIY doesn't work, call a tech (usually same-day in Tampa)
 
-🐂 Bulls Tip: This happens A LOT in Florida humidity! Schedule preventive maintenance every 6 months to avoid this. Many HVAC companies near USF offer student discounts - ask around! Also, installing a float switch ($30) can auto-shutoff your AC before major leaks happen.
+🐂 Bulls Tip: This happens A LOT in Florida humidity! Schedule preventive maintenance every 6 months to avoid this. Many HVAC companies near USF offer student discounts - ask around! Also, installing a float switch ($30) can auto-shutoff your AC before major leaks happen.`;
+      } 
+      else if (desc.includes("not cool") || desc.includes("not cold") || desc.includes("warm air") || desc.includes("not blowing cold")) {
+        demoResponse = `🔧 Diagnosis: Your AC is running but not cooling properly. This could be due to low refrigerant, a dirty air filter, frozen evaporator coils, or a failing compressor.
 
-Stay cool, Bulls! 🐂⚡`;
+💰 Estimated Cost: $75 – $600
+   • Filter replacement (DIY): $15-30
+   • Refrigerant recharge: $150-300
+   • Coil cleaning: $100-200
+   • Compressor issues: $400-600+
 
-      result.innerHTML = `🤖 AI Analysis Complete!\n\n${demoResponse}`;
+✅ Recommended Steps:
+   1. Check and replace air filter (do this first!)
+   2. Clean debris around outdoor unit
+   3. Check if coils are frozen (turn off and let thaw)
+   4. If problem persists, likely needs refrigerant or pro diagnosis
+
+🐂 Bulls Tip: In Tampa's heat, a dirty filter can reduce cooling by 15%! Change your filter monthly during summer. Also, keep your outdoor unit shaded if possible - it'll run more efficiently. Go Bulls!`;
+      }
+      else if (desc.includes("noise") || desc.includes("loud") || desc.includes("sound")) {
+        demoResponse = `🔧 Diagnosis: Unusual noises from your AC unit typically indicate loose parts, worn bearings, or debris in the system. The type of noise helps diagnose the issue.
+
+💰 Estimated Cost: $100 – $400
+   • Tightening loose parts: $100-150
+   • Fan motor replacement: $200-350
+   • Compressor noise (serious): $400-800
+
+✅ Recommended Steps:
+   1. Turn off AC to prevent further damage
+   2. Check for visible loose screws or panels
+   3. Remove any debris around outdoor unit
+   4. Call a tech if grinding/squealing continues
+
+🐂 Bulls Tip: Don't ignore weird noises - small problems become expensive fast in Florida! Most HVAC companies near USF offer free diagnostics. Student discount tip: ask if they have university specials!`;
+      }
+      else if (desc.includes("smell") || desc.includes("odor") || desc.includes("stink")) {
+        demoResponse = `🔧 Diagnosis: Bad odors from AC units often indicate mold/mildew growth (musty smell), electrical issues (burning smell), or dead critters in ductwork.
+
+💰 Estimated Cost: $100 – $300
+   • Duct cleaning: $150-250
+   • UV light installation (prevents mold): $200-300
+   • Filter + cleaning: $100-150
+
+✅ Recommended Steps:
+   1. Replace air filter immediately
+   2. Check drain pan for standing water (mold source)
+   3. If burning smell, turn off AC and call immediately
+   4. Consider professional duct cleaning
+
+🐂 Bulls Tip: Florida humidity = mold paradise! Run your AC fan for 15 min after cooling to dry out moisture. This simple trick prevents most musty smells. Stay fresh, Bulls!`;
+      }
+      else {
+        // Default response for other issues
+        demoResponse = `🔧 Diagnosis: Based on your description, your AC system likely needs professional attention. Common issues in Tampa include worn parts, electrical problems, or refrigerant issues.
+
+💰 Estimated Cost: $150 – $400
+   • Diagnostic fee: $75-125
+   • Minor repairs: $150-250
+   • Major component replacement: $300-400+
+
+✅ Recommended Steps:
+   1. Document all symptoms and when they occur
+   2. Check your air filter and thermostat settings
+   3. Schedule a professional diagnostic
+   4. Get 2-3 quotes before major repairs
+
+🐂 Bulls Tip: Tampa's brutal heat is tough on AC units! Regular maintenance (twice yearly) prevents 95% of breakdowns. Many techs near USF offer student discounts - always ask! Go Bulls! ⚡`;
+      }
+
+result.innerHTML = `🤖 AI Analysis Complete!\n\n${demoResponse}\n\nStay cool, Bulls! 🐂⚡
+
+<div class="contact-section">
+  <h3>📞 Ready to Fix Your AC?</h3>
+  <p><strong>Get Professional Help:</strong></p>
+  <p>🔧 <strong>FERDAIR LLC</strong> - Trusted HVAC Service</p>
+  <p>📱 Call/Text: <a href="tel:5615775327">(561) 577-5327</a></p>
+  <p>✉️ Email: <a href="mailto:Ferde.Estime@yahoo.com">Ferde.Estime@yahoo.com</a></p>
+  <p style="margin-top: 15px;"><strong>Next Steps:</strong></p>
+  <p>1. Screenshot this quote for your records</p>
+  <p>2. Contact FERDAIR LLC for professional service</p>
+  <p>3. Mention BullsCool for USF student pricing!</p>
+</div>`;
       
       btn.disabled = false;
       btn.textContent = "Get AI Quote (Free)";
     }
   </script>
-
-  <footer style="margin-top: 50px; opacity: 0.8;">
-    Made with ❤️ at HackJam 2025 — Go Bulls! 🐂
-  </footer>
 </body>
 </html>
