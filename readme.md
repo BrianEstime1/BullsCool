@@ -39,6 +39,43 @@ BullsCool uses Google Gemini AI's vision capabilities to:
 - **Hosting**: GitHub Pages / Vercel (planned)
 - **APIs**: Generative Language API
 
+## ☁️ Cloudflare Worker Deployment
+
+Use a Cloudflare Worker to keep your Gemini API key secret and enable CORS for your GitHub Pages domain.
+
+1. **Install Wrangler** (Cloudflare CLI)
+   ```bash
+   npm install -g wrangler
+   ```
+
+2. **Create `wrangler.toml`** at the project root (adjust `name` and `account_id`):
+   ```toml
+   name = "bulls-cool-worker"
+   main = "cloudflare/worker.js"
+   compatibility_date = "2024-09-23"
+   account_id = "<your-account-id>"
+
+   [vars]
+   ALLOWED_ORIGINS = "https://<your-gh-username>.github.io,https://<your-gh-username>.github.io/BullsCool,https://localhost:5173"
+   ```
+
+3. **Add your Gemini API key as a secret**
+   ```bash
+   wrangler secret put GEMINI_API_KEY
+   ```
+
+4. **Publish the worker**
+   ```bash
+   wrangler deploy
+   ```
+
+5. **Update the frontend**
+   - Set `WORKER_URL` in `index.html` to your deployed `*.workers.dev` URL.
+
+6. **CORS notes**
+   - `ALLOWED_ORIGINS` is a comma-separated list; include your GitHub Pages origin.
+   - The worker responds to `OPTIONS` preflight automatically.
+
 ## 🚀 Quick Start
 
 ### Option 1: Open Locally
